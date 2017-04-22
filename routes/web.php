@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('/login', function(){
+	return view('user.login');
+});
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['middleware' => 'auth'], function (){
+	Route::get('/user','UserConroller@index');
 });
